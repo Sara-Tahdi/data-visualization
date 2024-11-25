@@ -30,7 +30,7 @@ uploaded_file = st.sidebar.file_uploader('Upload your data file', type="xlsx")
 
 # Function to load the default file if no file is uploaded
 def load_default_data():
-    default_file_url = "https://github.com/Sara-Tahdi/data-visualization/blob/main/data/mfe_log.xlsx"
+    default_file_url = "https://raw.githubusercontent.com/Sara-Tahdi/data-visualization/main/data/mfe_log.xlsx"
     try:
         # Use pandas to load the file directly from GitHub (as a raw URL)
         return pd.read_excel(default_file_url, header=14)
