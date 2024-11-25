@@ -30,14 +30,12 @@ uploaded_file = st.sidebar.file_uploader('Upload your data file', type="xlsx")
 
 # Function to load the default file if no file is uploaded
 def load_default_data():
-    # Use raw string or double backslashes for Windows paths
-    default_file_path = r"data\mfe_log.xlsx"  # Correcting the file path for Windows
-    print(f"Looking for the file at: {default_file_path}")
-    
-    if os.path.exists(default_file_path):
-        return pd.read_excel(default_file_path, header=14)
-    else:
-        st.sidebar.error(f"Default file '{default_file_path}' not found. Please upload a file.")
+    default_file_url = "https://github.com/Sara-Tahdi/data-visualization/blob/main/data/mfe_log.xlsx"
+    try:
+        # Use pandas to load the file directly from GitHub (as a raw URL)
+        return pd.read_excel(default_file_url, header=14)
+    except Exception as e:
+        st.sidebar.error(f"Default file could not be loaded. Error: {str(e)}")
         return None
 
 # Data display
